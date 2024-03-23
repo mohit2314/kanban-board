@@ -78,7 +78,8 @@ const columns = ref<Column[]>([
             },
         ]
     }
-])
+]);
+const alt = useKeyModifier("Alt")
 
 </script>
 
@@ -100,7 +101,7 @@ const columns = ref<Column[]>([
             </header>
             <draggable 
         v-model="column.tasks" 
-        group="tasks" 
+        :group="{name:'tasks',pull:alt ? 'clone' : true}" 
         item-key="id" 
         :animation="150"
         handle=".drag-handle"
